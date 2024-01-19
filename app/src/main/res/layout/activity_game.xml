@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10sp"
+    android:layout_marginTop="10sp"
+    android:layout_marginRight="10sp"
+    android:layout_marginBottom="10sp">
+
+    <TextView
+        android:id="@+id/textView_namePlayer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textView_namePlayer1"
+        android:textSize="28sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_namePlayer2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:rotation="180"
+        android:text="@string/textView_namePlayer2"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_scorePlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:width="80dp"
+        android:gravity="center_vertical"
+        android:text="0"
+        android:textSize="130sp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_scorePlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp"
+        android:width="80dp"
+        android:gravity="center_vertical"
+        android:rotation="180"
+        android:text="0"
+        android:textSize="130sp"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_player2"
+        android:layout_width="490dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="#ff5e00"
+        app:layout_constraintEnd_toStartOf="@+id/textView_scorePlayer2"
+        app:layout_constraintStart_toEndOf="@+id/textView_scorePlayer1"
+        app:layout_constraintTop_toBottomOf="@+id/textView_namePlayer1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_player1"
+        android:layout_width="490dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#ff5e00"
+        app:layout_constraintBottom_toTopOf="@+id/textView_namePlayer2"
+        app:layout_constraintEnd_toStartOf="@+id/textView_scorePlayer2"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toEndOf="@+id/textView_scorePlayer1" />
+
+    <TextView
+        android:id="@+id/textView_questionPlayer2"
+        android:layout_width="510dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:rotation="180"
+        android:text="Question joueur 2"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView_scorePlayer2"
+        app:layout_constraintStart_toEndOf="@+id/textView_scorePlayer1"
+        app:layout_constraintTop_toBottomOf="@+id/button_player2" />
+
+    <TextView
+        android:id="@+id/textView_questionPlayer1"
+        android:layout_width="510dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:text="Question joueur 1"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_player1"
+        app:layout_constraintEnd_toStartOf="@+id/textView_scorePlayer2"
+        app:layout_constraintStart_toEndOf="@+id/textView_scorePlayer1" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@+id/textView_scorePlayer2"
+        app:layout_constraintStart_toEndOf="@+id/textView_scorePlayer1"
+        app:layout_constraintTop_toBottomOf="@+id/textView_questionPlayer2"
+        app:layout_constraintBottom_toTopOf="@+id/textView_questionPlayer1">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_replay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#ff5e00"
+            android:text="Rejouer" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#ff5e00"
+            android:text="Menu"
+            android:layout_toEndOf="@id/button_replay"
+            android:layout_marginLeft="40dp"/>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

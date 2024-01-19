@@ -1,0 +1,15 @@
+<resources>
+    <!-- Texte écran d'accueil -->
+    <string name="app_name">SpeedQuiz</string>
+    <string name="btn_newPlayer">NEW PLAYER</string>
+    <string name="btn_play">Play</string>
+
+    <!-- Texte menu -->
+    <string name="menu_settings">Settings</string>
+    <string name="menu_questions">Questions</string>
+    <string name="menu_about">About</string>
+
+    <!-- Texte écran de jeu -->
+    <string name="textView_namePlayer1">Name player 1</string>
+    <string name="textView_namePlayer2">Name player 2</string>
+</resources>
