@@ -17,14 +17,14 @@ public class GameManager {
     ArrayList<Question> questionArrayList = questionData.getListeQuestion();
     public int setScore(int player) {
         if (player == 1) {
-            if (questionArrayList.get(currentQuestion).getReponse()) {
+            if (questionArrayList.get(currentQuestion-1).getReponse()) {
                 scorePlayer1++;
             } else {
                 scorePlayer1--;
             }
             return scorePlayer1;
         } else {
-            if (questionArrayList.get(currentQuestion).getReponse()) {
+            if (questionArrayList.get(currentQuestion-1).getReponse()) {
                 scorePlayer2++;
             } else {
                 scorePlayer2--;

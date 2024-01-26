@@ -116,7 +116,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#ff5e00"
-            android:text="Rejouer" />
+            android:text="Rejouer"
+            android:visibility="invisible"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_menu"
@@ -125,7 +126,8 @@
             android:backgroundTint="#ff5e00"
             android:text="Menu"
             android:layout_toEndOf="@id/button_replay"
-            android:layout_marginLeft="40dp"/>
+            android:layout_marginLeft="40dp"
+            android:visibility="invisible"/>
 
     </RelativeLayout>
 

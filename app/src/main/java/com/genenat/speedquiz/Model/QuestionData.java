@@ -9,6 +9,7 @@ public class QuestionData {
      * Ajoute une question à la liste de question.
      */
     public void setListeQuestion() {
+        listeQuestion.clear();
         listeQuestion.add(new Question("La Terre tourne autour du Soleil.",true));
         listeQuestion.add(new Question("L'eau bout à 80 degrés Celsius.",false));
         listeQuestion.add(new Question("Le cheval est un ruminant.",false));

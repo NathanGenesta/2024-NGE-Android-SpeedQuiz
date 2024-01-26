@@ -2,7 +2,7 @@
     <!-- Texte écran d'accueil -->
     <string name="app_name">SpeedQuiz</string>
     <string name="btn_newPlayer">NEW PLAYER</string>
-    <string name="btn_play">Play</string>
+    <string name="btn_play">PLAY GAME</string>
 
     <!-- Texte menu -->
     <string name="menu_settings">Settings</string>

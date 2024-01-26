@@ -12,9 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.genenat.speedquiz.Control.GameManager;
+import com.genenat.speedquiz.Model.Question;
 import com.genenat.speedquiz.Model.QuestionData;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
     GameManager GameManager = new GameManager();
@@ -29,6 +32,8 @@ public class GameActivity extends AppCompatActivity {
     private TextView TV_scorePlayer2;
     private TextView TV_questionPlayer1;
     private TextView TV_questionPlayer2;
+
+    QuestionData questionData = new QuestionData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,14 +65,27 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        //Affiche l'intitulé de la question
         TV_questionPlayer1.setText(GameManager.getIntituleQuestion());
         TV_questionPlayer2.setText(GameManager.getIntituleQuestion());
+
+        //Désactive les boutons "Replay" et "Menu"
+        BT_replay.setEnabled(false);
+        BT_menu.setEnabled(false);
+
+        //Si on est à la dernière question, ça active et affiche les boutons
+        if (GameManager.currentQuestion == questionData.getListeQuestion().size()-1) {
+            BT_replay.setEnabled(true);
+            BT_menu.setEnabled(true);
+            BT_replay.setVisibility(View.VISIBLE);
+            BT_menu.setVisibility(View.VISIBLE);
+        }
 
         /**
          * Lorsqu'on clique sur le bouton "Replay", ça relance
          * l'activity_game
          */
-        BT_menu.setOnClickListener(new View.OnClickListener() {
+        BT_replay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 recreate();
@@ -95,7 +113,7 @@ public class GameActivity extends AppCompatActivity {
                 GameManager.currentQuestion++;
                 TV_questionPlayer1.setText(GameManager.getIntituleQuestion());
                 TV_questionPlayer2.setText(GameManager.getIntituleQuestion());
-                TV_scorePlayer1.setText(Integer.toString(GameManager.setScore(1)));
+                TV_scorePlayer1.setText(String.valueOf(GameManager.setScore(1)));
             }
         });
 
@@ -109,7 +127,7 @@ public class GameActivity extends AppCompatActivity {
                 GameManager.currentQuestion++;
                 TV_questionPlayer1.setText(GameManager.getIntituleQuestion());
                 TV_questionPlayer2.setText(GameManager.getIntituleQuestion());
-                TV_scorePlayer2.setText(Integer.toString(GameManager.setScore(2)));
+                TV_scorePlayer2.setText(String.valueOf(GameManager.setScore(2)));
             }
         });
     }
