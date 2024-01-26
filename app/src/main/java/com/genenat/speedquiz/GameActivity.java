@@ -11,11 +11,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.genenat.speedquiz.Control.GameManager;
 import com.genenat.speedquiz.Model.QuestionData;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class GameActivity extends AppCompatActivity {
+    GameManager GameManager = new GameManager();
 
     private MaterialButton BT_player1;
     private MaterialButton BT_player2;
@@ -58,6 +60,8 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        TV_questionPlayer1.setText(GameManager.getIntituleQuestion());
+        TV_questionPlayer2.setText(GameManager.getIntituleQuestion());
 
         /**
          * Lorsqu'on clique sur le bouton "Replay", ça relance
@@ -82,13 +86,30 @@ public class GameActivity extends AppCompatActivity {
         });
 
         /**
-         * Lorsqu'on clique sur le bouton "Menu", ça retourne
-         * dans l'activity_main
+         * Lorsque le joueur 1 clique sur son bouton, ça met à jour
+         * son score et ça passe à la question suivante.
          */
         BT_player1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GameManager.currentQuestion++;
+                TV_questionPlayer1.setText(GameManager.getIntituleQuestion());
+                TV_questionPlayer2.setText(GameManager.getIntituleQuestion());
+                TV_scorePlayer1.setText(Integer.toString(GameManager.setScore(1)));
+            }
+        });
 
+        /**
+         * Lorsque le joueur 2 clique sur son bouton, ça met à jour
+         * son score et ça affiche la question suivante.
+         */
+        BT_player2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameManager.currentQuestion++;
+                TV_questionPlayer1.setText(GameManager.getIntituleQuestion());
+                TV_questionPlayer2.setText(GameManager.getIntituleQuestion());
+                TV_scorePlayer2.setText(Integer.toString(GameManager.setScore(2)));
             }
         });
     }

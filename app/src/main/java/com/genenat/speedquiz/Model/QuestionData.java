@@ -8,9 +8,9 @@ public class QuestionData {
     /**
      * Ajoute une question à la liste de question.
      */
-    private void setListeQuestion() {
+    public void setListeQuestion() {
         listeQuestion.add(new Question("La Terre tourne autour du Soleil.",true));
-        listeQuestion.add(new Question("L'eau bout à 120 degrés Celsius.",false));
+        listeQuestion.add(new Question("L'eau bout à 80 degrés Celsius.",false));
         listeQuestion.add(new Question("Le cheval est un ruminant.",false));
         listeQuestion.add(new Question("La Révolution française a commencé en 1789.",true));
         listeQuestion.add(new Question("La photosynthèse convertit la lumière en énergie pour les plantes.",true));
@@ -25,6 +25,7 @@ public class QuestionData {
      * @return la liste de question
      */
     public ArrayList<Question> getListeQuestion() {
+        setListeQuestion();
         return listeQuestion;
     }
 }
