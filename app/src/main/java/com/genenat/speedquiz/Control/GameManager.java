@@ -43,6 +43,8 @@ public class GameManager {
             } else {
                 scorePlayer1--;
             }
+            if (scorePlayer1 < 0)
+                scorePlayer1 = 0;
             return scorePlayer1;
         } else {
             if (questionData.getListeQuestion().get(currentQuestion-1).getReponse() == 1) {
@@ -50,6 +52,8 @@ public class GameManager {
             } else {
                 scorePlayer2--;
             }
+            if (scorePlayer2 < 0)
+                scorePlayer2 = 0;
             return scorePlayer2;
         }
     }
