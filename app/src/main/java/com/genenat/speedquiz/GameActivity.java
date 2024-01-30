@@ -35,6 +35,61 @@ public class GameActivity extends AppCompatActivity {
 
     QuestionData questionData = new QuestionData();
 
+    /**
+     * @return le bouton replay.
+     */
+    public MaterialButton getButtonReplay() {
+        return BT_replay;
+    }
+
+    /**
+     * @return le bouton menu.
+     */
+    public MaterialButton getButtonMenu() {
+        return BT_menu;
+    }
+
+    /**
+     * @return le bouton du joueur 1.
+     */
+    public MaterialButton getButtonPlayer1() {
+        return BT_player1;
+    }
+
+    /**
+     * @return le bouton du joueur 2.
+     */
+    public MaterialButton getButtonPlayer2() {
+        return BT_player2;
+    }
+
+    /**
+     * @return la texte view des questions du joueur 1.
+     */
+    public TextView getTextViewPlayer1() {
+        return TV_questionPlayer1;
+    }
+
+    /**
+     * @return la texte view des questions du joueur 2.
+     */
+    public TextView getTextViewPlayer2() {
+        return TV_questionPlayer2;
+    }
+
+    /**
+     * @return la texte view des scores du joueur 1.
+     */
+    public TextView getTextViewScorePlayer1() {
+        return TV_scorePlayer1;
+    }
+
+    /**
+     * @return la texte view des scores du joueur 2.
+     */
+    public TextView getTextViewScorePlayer2() {
+        return TV_scorePlayer2;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,21 +120,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        //Affiche l'intitulé de la question
-        TV_questionPlayer1.setText(GameManager.getIntituleQuestion());
-        TV_questionPlayer2.setText(GameManager.getIntituleQuestion());
-
-        //Désactive les boutons "Replay" et "Menu"
-        BT_replay.setEnabled(false);
-        BT_menu.setEnabled(false);
-
-        //Si on est à la dernière question, ça active et affiche les boutons
-        if (GameManager.currentQuestion == questionData.getListeQuestion().size()-1) {
-            BT_replay.setEnabled(true);
-            BT_menu.setEnabled(true);
-            BT_replay.setVisibility(View.VISIBLE);
-            BT_menu.setVisibility(View.VISIBLE);
-        }
+        GameManager.startGame();
 
         /**
          * Lorsqu'on clique sur le bouton "Replay", ça relance
@@ -110,10 +151,7 @@ public class GameActivity extends AppCompatActivity {
         BT_player1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GameManager.currentQuestion++;
-                TV_questionPlayer1.setText(GameManager.getIntituleQuestion());
-                TV_questionPlayer2.setText(GameManager.getIntituleQuestion());
-                TV_scorePlayer1.setText(String.valueOf(GameManager.setScore(1)));
+                GameManager.getNextQuestion();
             }
         });
 
@@ -124,10 +162,7 @@ public class GameActivity extends AppCompatActivity {
         BT_player2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GameManager.currentQuestion++;
-                TV_questionPlayer1.setText(GameManager.getIntituleQuestion());
-                TV_questionPlayer2.setText(GameManager.getIntituleQuestion());
-                TV_scorePlayer2.setText(String.valueOf(GameManager.setScore(2)));
+                GameManager.getNextQuestion();
             }
         });
     }
