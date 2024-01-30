@@ -20,8 +20,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
-    GameManager GameManager = new GameManager();
-
     private MaterialButton BT_player1;
     private MaterialButton BT_player2;
     private MaterialButton BT_replay;
@@ -32,7 +30,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView TV_scorePlayer2;
     private TextView TV_questionPlayer1;
     private TextView TV_questionPlayer2;
-
+    private GameManager gameManager = new GameManager();
     QuestionData questionData = new QuestionData();
 
     /**
@@ -95,6 +93,8 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        gameManager.gameActivity = this;
+
         BT_player1 = findViewById(R.id.button_player1);
         BT_player2 = findViewById(R.id.button_player2);
         BT_replay = findViewById(R.id.button_replay);
@@ -120,7 +120,9 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        GameManager.startGame();
+
+        //Lance le jeu
+        gameManager.startGame();
 
         /**
          * Lorsqu'on clique sur le bouton "Replay", ça relance
@@ -145,24 +147,26 @@ public class GameActivity extends AppCompatActivity {
         });
 
         /**
-         * Lorsque le joueur 1 clique sur son bouton, ça met à jour
-         * son score et ça passe à la question suivante.
+         * Lorsque le joueur 1 clique sur son bouton, ça affiche la
+         * question suivante et ça met à jour son score.
          */
         BT_player1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GameManager.getNextQuestion();
+                gameManager.getNextQuestion();
+                getTextViewScorePlayer1().setText(String.valueOf(gameManager.setScore(1)));
             }
         });
 
         /**
-         * Lorsque le joueur 2 clique sur son bouton, ça met à jour
-         * son score et ça affiche la question suivante.
+         * Lorsque le joueur 2 clique sur son bouton, ça affiche la
+         * question suivante et ça met à jour son score.
          */
         BT_player2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GameManager.getNextQuestion();
+                gameManager.getNextQuestion();
+                getTextViewScorePlayer2().setText(String.valueOf(gameManager.setScore(2)));
             }
         });
     }
