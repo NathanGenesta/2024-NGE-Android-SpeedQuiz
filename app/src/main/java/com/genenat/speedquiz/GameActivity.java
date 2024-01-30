@@ -31,7 +31,6 @@ public class GameActivity extends AppCompatActivity {
     private TextView TV_questionPlayer1;
     private TextView TV_questionPlayer2;
     private GameManager gameManager = new GameManager();
-    QuestionData questionData = new QuestionData();
 
     /**
      * @return le bouton replay.
@@ -94,6 +93,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         gameManager.gameActivity = this;
+        gameManager.questionData = new QuestionData(this);
 
         BT_player1 = findViewById(R.id.button_player1);
         BT_player2 = findViewById(R.id.button_player2);
@@ -153,7 +153,6 @@ public class GameActivity extends AppCompatActivity {
         BT_player1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameManager.getNextQuestion();
                 getTextViewScorePlayer1().setText(String.valueOf(gameManager.setScore(1)));
             }
         });
@@ -165,7 +164,6 @@ public class GameActivity extends AppCompatActivity {
         BT_player2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameManager.getNextQuestion();
                 getTextViewScorePlayer2().setText(String.valueOf(gameManager.setScore(2)));
             }
         });

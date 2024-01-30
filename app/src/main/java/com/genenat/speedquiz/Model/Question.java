@@ -1,15 +1,22 @@
 package com.genenat.speedquiz.Model;
 
+import android.database.Cursor;
+
 public class Question {
     private String intitule;
-    private boolean reponse;
+    private int reponse;
+
+    public Question(Cursor cursor){
+        intitule = cursor.getString(cursor.getColumnIndexOrThrow("question"));
+        reponse = cursor.getInt(cursor.getColumnIndexOrThrow("reponse"));
+    }
 
     /**
      * Construit une question avec un intitulé et une réponse
      * @param intitule  Intitulé de la question
      * @param reponse   Réponse à la question
      */
-    public Question(String intitule, boolean reponse) {
+    public Question(String intitule, int reponse) {
         this.intitule = intitule;
         this.reponse = reponse;
     }
@@ -24,7 +31,7 @@ public class Question {
     /**
      * @return la réponse de la question
      */
-    public boolean getReponse () {
+    public int getReponse () {
         return reponse;
     }
 }
