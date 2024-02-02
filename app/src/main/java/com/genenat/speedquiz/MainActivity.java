@@ -1,14 +1,19 @@
 package com.genenat.speedquiz;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Layout;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
@@ -21,9 +26,11 @@ public class MainActivity extends AppCompatActivity {
     private TextInputLayout LayoutET_player1;
     private TextInputLayout LayoutET_player2;
     private MaterialButton BT_startGame;
-    private static String namePlayer1;
-    private static String namePlayer2;
+    private LinearLayout layoutAbout;
+    private MaterialButton BT_about_ok;
+    private MenuItem about;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         ET_player1 = findViewById(R.id.editText_namePlayer1);
         ET_player2 = findViewById(R.id.editText_namePlayer2);
         BT_startGame = findViewById(R.id.button_startGame);
+        layoutAbout = findViewById(R.id.layout_about);
+        BT_about_ok = findViewById(R.id.button_about_ok);
 
         BT_startGame.setEnabled(false);
         ET_player1.setEnabled(false);
@@ -122,5 +131,24 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(gameActivity);
             }
         });
+
+        /**
+         * Lorsqu'on clique sur le bouton "OK" d'about, ça remet invisible le
+         * layout "About"
+         */
+        BT_about_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layoutAbout.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (about.getItemId() == R.id.about) {
+            layoutAbout.setVisibility(View.VISIBLE);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

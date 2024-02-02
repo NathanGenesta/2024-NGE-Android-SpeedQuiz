@@ -3,6 +3,9 @@
     <string name="app_name">SpeedQuiz</string>
     <string name="btn_newPlayer">NEW PLAYER</string>
     <string name="btn_play">PLAY GAME</string>
+    <string name="txtView_about_version">Version : 1.0</string>
+    <string name="txtView_about_author">Author : Nathan Génesta</string>
+    <string name="btn_about_ok">OK</string>
 
     <!-- Texte menu -->
     <string name="menu_settings">Settings</string>
