@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.Layout;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -34,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar mainToolBar = findViewById(R.id.topAppBar);
+        Toolbar mainToolbar = findViewById(R.id.topAppBar);
+        setSupportActionBar(mainToolbar);
 
         BT_newPlayer = findViewById(R.id.button_newPlayer);
         LayoutET_player1 = findViewById(R.id.editTextLayout_player1);
@@ -46,9 +48,12 @@ public class MainActivity extends AppCompatActivity {
         layoutAbout = findViewById(R.id.layout_about);
         BT_about_ok = findViewById(R.id.button_about_ok);
 
-        BT_startGame.setEnabled(false);
-        ET_player1.setEnabled(false);
-        ET_player2.setEnabled(false);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
     }
 
     @Override
@@ -146,9 +151,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        System.out.println("Bonjour");
         if (about.getItemId() == R.id.about) {
             layoutAbout.setVisibility(View.VISIBLE);
         }
-        return super.onOptionsItemSelected(item);
+           return super.onOptionsItemSelected(item);
     }
 }

@@ -12,6 +12,12 @@
     <string name="menu_questions">Questions</string>
     <string name="menu_about">About</string>
 
+    <!-- Texte écran des paramètres -->
+    <string name="error_too_many_questions">Error. You have selected too many questions.</string>
+    <string name="ok_button">OK</string>
+    <string name="settings_questions_number">10</string>
+    <string name="settings_questions_speed">5 seconds</string>
+
     <!-- Texte écran de jeu -->
     <string name="textView_namePlayer1">Name player 1</string>
     <string name="textView_namePlayer2">Name player 2</string>

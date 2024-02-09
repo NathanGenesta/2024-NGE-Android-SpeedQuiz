@@ -20,7 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ff5e00"
-            app:menu="@menu/main_menu"
             app:title="@string/app_name" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -38,6 +37,7 @@
         android:id="@+id/editTextLayout_player1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:visibility="invisible">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -53,6 +53,7 @@
         android:id="@+id/editTextLayout_player2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:visibility="invisible">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -108,6 +109,7 @@
         android:layout_marginTop="30sp"
         android:backgroundTint="#ff5e00"
         android:text="@string/btn_play"
+        android:enabled="false"
         android:visibility="invisible" />
 
 
