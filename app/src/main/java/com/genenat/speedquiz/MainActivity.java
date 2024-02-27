@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
         Toolbar mainToolbar = findViewById(R.id.topAppBar);
         setSupportActionBar(mainToolbar);
 
@@ -151,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        System.out.println("Bonjour");
         if (about.getItemId() == R.id.about) {
             layoutAbout.setVisibility(View.VISIBLE);
         }
